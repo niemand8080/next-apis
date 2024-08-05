@@ -1,9 +1,10 @@
 import { NextRequest } from "next/server";
+import { searchStockPhotos } from './apis';
 
 import { Functions } from "@/interface/interfaces";
 
 const functions: Functions = {
-  
+  searchStockPhotos,
 };
 
 interface RetryConfig {
@@ -19,7 +20,7 @@ const defaultRetryConfig: RetryConfig = {
 };
 
 const retryConfigs: Record<keyof Functions, RetryConfig> = {
-  test: defaultRetryConfig
+  searchStockPhotos: defaultRetryConfig
 };
 
 async function handleRequest(request: NextRequest): Promise<Response> {
