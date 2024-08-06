@@ -7,7 +7,7 @@ import Loader from '@/components/loader/Loader';
 const Unsplash: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [loading, setLoading] = useState<boolean>(false);
-    const [image, setImage] = useState<any>();
+    const [images, setImages] = useState<any>();
 
     const getPhoto = async () => {
         if (!inputRef.current) return;
@@ -20,7 +20,7 @@ const Unsplash: React.FC = () => {
             });
             console.log(response.data);
             if (response.data.success) {
-                setImage(response.data.photo);
+                setImages(response.data.images);
             }
         } catch (error) {
             console.log("Unsplash Error: ", error);

@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const UNSPLASH_ACCESS_KEY = 'f4YCZYMR5L2xmwAWdylVOVEt4rZDy-FF_u3Eep1Z5FU';
-
 const unsplashApi = axios.create({
     baseURL: 'https://api.unsplash.com',
     headers: {
@@ -9,20 +7,29 @@ const unsplashApi = axios.create({
     }
 });
 
-async function searchStockPhotos(query: string) {
+async function searchStockPhotos(
+    query: string, 
+    page: number = 5, 
+    per_page: number = 10, 
+    order_by: "latest" | "relevant" = "relevant", 
+    color: "black_and_white" | "black" | "white" | "yellow" | "orange" | "red" | "purple" | "magenta" | "green" | "teal" | "blue" | "" = "", 
+    orientation: "landscape" | "portrait" | "squarish" | "" = ""
+) {
     try {
         const response = await unsplashApi.get('/search/photos', {
-            params: { query }
+            params: { query, page, per_page, order_by, color, orientation }
         });
 
-        console.log(response)
+        console.log(response.data);
 
         return { success: true, message: "got photos", photos: response }
     } catch (error) {
-        console.log("API -> searchStockPhotos: Error");
+        console.log("API -> searchStockPhotos: Error", error);
         return { success: false, message: "Internal Servererror" }
     }
 }
+
+searchStockPhotos("Tree", 5, 10);
 
 export {
     searchStockPhotos,
