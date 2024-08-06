@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { searchStockPhotos } from './apis';
+import { searchStockPhotos } from './unsplash';
 
 import { Functions } from "@/interface/interfaces";
 

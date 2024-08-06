@@ -6,6 +6,8 @@ import Loader from '@/components/loader/Loader';
 
 const Unsplash: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
+    const perPageSelectRef = useRef<HTMLSelectElement>(null);
+
     const [loading, setLoading] = useState<boolean>(false);
     const [images, setImages] = useState<any>();
 
@@ -20,7 +22,7 @@ const Unsplash: React.FC = () => {
             });
             console.log(response.data);
             if (response.data.success) {
-                setImages(response.data.images);
+                setImages(response.data.photos);
             }
         } catch (error) {
             console.log("Unsplash Error: ", error);
@@ -36,8 +38,13 @@ const Unsplash: React.FC = () => {
                         type="text"
                         ref={inputRef}
                         placeholder="Type a word..."
-                        className={`relative z-20 w-full rounded-md bg-neutral-950 p-2 px-4 text-neutral-200 placeholder-neutral-500 outline-none focus:ring-1 focus:ring-neutral-700`}
+                        className={`relative w-72 rounded-md bg-neutral-950 p-2 px-4 text-neutral-200 placeholder-neutral-500 outline-none focus:ring-1 focus:ring-neutral-700`}
                     />
+                    <select name="perPageSelectRef" ref={perPageSelectRef} className="">
+                        <option value={9}>9</option>
+                        <option value={18}>18</option>
+                        <option value={36}>36</option>
+                    </select>
                     <button onClick={getPhoto} className="relative bottom-0 right-0 ml-3 flex items-center justify-center rounded-md bg-green-500 p-2 text-neutral-200 transition-all duration-150 hover:bg-green-600 focus:outline-none focus:ring-1 focus:ring-neutral-500">Submit</button>
                 </div>
                 <Loader visible={loading}></Loader>
