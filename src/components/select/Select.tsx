@@ -5,11 +5,11 @@ import { SelectProps } from '@/interface/interfaces'
 const Select =  forwardRef<HTMLSelectElement, SelectProps>(({ children }, ref) => {
     return (
         <>
-            <div className="relative w-full">
+            <div className="relative w-auto">
                 <select
                     ref={ref}
                     name={`${ref}`}
-                    className="w-full cursor-pointer appearance-none rounded-md bg-neutral-950 px-3 py-2 text-neutral-200 transition-all duration-150 ease-in-out focus:outline-none focus:ring-1 focus:ring-neutral-700"
+                    className="w-auto pr-7 cursor-pointer appearance-none rounded-md bg-neutral-950 px-3 py-2 text-neutral-200 transition-all duration-150 ease-in-out focus:outline-none focus:ring-1 focus:ring-neutral-700"
                 >
                     {children}
                 </select>

@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Loader from '@/components/loader/Loader';
 import Select from '@/components/select/Select'
+import RepeatedElement from '@/components/repeated element/RepeatedElement'
 
 const Unsplash: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -37,7 +38,7 @@ const Unsplash: React.FC = () => {
     return (
         <>
             <div className="w-screen h-screen flex items-center justify-center flex-col">
-                <div className="px-5 py-2 rounded-md bg-neutral-900 flex gap-5">
+                <div className="px-5 py-2 absolute top-10 left-1/2 -translate-x-1/2 w-auto rounded-md bg-neutral-900 flex gap-5">
                     <input
                         type="text"
                         ref={inputRef}
@@ -75,7 +76,11 @@ const Unsplash: React.FC = () => {
                     </Select>
                     <button onClick={getPhoto} className="relative bottom-0 right-0 ml-3 flex items-center justify-center rounded-md bg-green-500 p-2 text-neutral-200 transition-all duration-150 hover:bg-green-600 focus:outline-none focus:ring-1 focus:ring-neutral-500">Submit</button>
                 </div>
-                <Loader visible={loading}></Loader>
+                <div className={``}>
+                    <RepeatedElement count={1}>
+                        hi
+                    </RepeatedElement>
+                </div>
             </div>
         </>
     );
