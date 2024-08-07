@@ -2,13 +2,14 @@
 import React, { forwardRef } from 'react'
 import { SelectProps } from '@/interface/interfaces'
 
-const Select =  forwardRef<HTMLSelectElement, SelectProps>(({ children }, ref) => {
+const Select =  forwardRef<HTMLSelectElement, SelectProps>(({ children, onChange }, ref) => {
     return (
         <>
             <div className="relative w-auto">
                 <select
                     ref={ref}
                     name={`${ref}`}
+                    onChange={onChange}
                     className="w-auto pr-7 cursor-pointer appearance-none rounded-md bg-neutral-950 px-3 py-2 text-neutral-200 transition-all duration-150 ease-in-out focus:outline-none focus:ring-1 focus:ring-neutral-700"
                 >
                     {children}

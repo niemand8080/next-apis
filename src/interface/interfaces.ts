@@ -130,6 +130,7 @@ type UnsplashResponse = UnsplashImage[];
 
 interface SelectProps {
     children: React.ReactNode;
+    onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export type {
