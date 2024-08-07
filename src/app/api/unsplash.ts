@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { createApi } from "unsplash-js"
 
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
@@ -20,7 +19,7 @@ async function searchStockPhotos(
     try {
         const photos = await unsplash.search.getPhotos({ query, page, perPage: per_page, orderBy: order_by, orientation, color });
 
-        // console.log(photos.response?.results[0]);
+        console.log(photos.response?.results[0]);
 
        return { success: true, message: "Successfully retrieved photos", photos: photos.response?.results }
     } catch (error) {

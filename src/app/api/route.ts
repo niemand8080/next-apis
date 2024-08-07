@@ -1,10 +1,12 @@
 import { NextRequest } from "next/server";
 import { searchStockPhotos } from './unsplash';
+import { searchInDictionary } from './dictionary';
 
 import { Functions } from "@/interface/interfaces";
 
 const functions: Functions = {
   searchStockPhotos,
+  searchInDictionary,
 };
 
 interface RetryConfig {
@@ -20,7 +22,8 @@ const defaultRetryConfig: RetryConfig = {
 };
 
 const retryConfigs: Record<keyof Functions, RetryConfig> = {
-  searchStockPhotos: defaultRetryConfig
+  searchStockPhotos: defaultRetryConfig,
+  searchInDictionary: defaultRetryConfig,
 };
 
 async function handleRequest(request: NextRequest): Promise<Response> {

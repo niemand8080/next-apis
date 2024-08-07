@@ -19,6 +19,7 @@ interface Functions {
       | "",
     orientation: "landscape" | "portrait" | "squarish" | "",
   ) => Promise<any>;
+  searchInDictionary: (word: string) => Promise<any>;
 }
 
 interface LoaderProps {
@@ -128,6 +129,10 @@ interface UnsplashImage {
 // The full response is an array of UnsplashImage objects
 type UnsplashResponse = UnsplashImage[];
 
+interface SearchInDictionaryProps {
+    word: string;
+}
+
 interface SelectProps {
     children: React.ReactNode;
     onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -140,4 +145,5 @@ export type {
   UnsplashResponse,
   UnsplashImage,
   SelectProps,
+  SearchInDictionaryProps,
 };

@@ -20,7 +20,7 @@ const Unsplash: React.FC = () => {
     const [images, setImages] = useState<UnsplashResponse>();
     const [currentPage, setCurrentPage] = useState<number>(1);
 
-    const placeholders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36];
+    const placeholders = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18], [19, 20, 21], [22, 23, 24], [25, 26, 27], [28, 29, 30], [31, 32, 33], [34, 35, 36]];
 
     const getPhoto = async () => {
         if (!inputRef.current) return;
@@ -52,9 +52,9 @@ const Unsplash: React.FC = () => {
                         className={`relative w-72 rounded-md bg-neutral-950 p-2 px-4 text-neutral-200 placeholder-neutral-500 outline-none focus:ring-1 focus:ring-neutral-700`}
                     />
                     <Select ref={perPageSelectRef} onChange={(e) => {setImgPerPage(Number(e.target.value))}}>
-                        <option value={9}>9 - Pages</option>
-                        <option value={18}>18 - Pages</option>
-                        <option value={36}>36 - Pages</option>
+                        <option value={9}>9 / Page</option>
+                        <option value={18}>18 / Page</option>
+                        <option value={36}>36 / Page</option>
                     </Select>
                     <Select ref={orderSelectRef}>
                         <option value={"relevant"}>relevant</option>
@@ -86,16 +86,31 @@ const Unsplash: React.FC = () => {
                         </Loader>
                     </button>
                 </div>
-                <div className={`absolute top-28 left-1/2 flex gap-7 mb-7 -translate-x-1/2`}>
-                    {placeholders.map((placeholder, index) => (
-                        <>
-                            {index < imgPerPage ? (
-                                <div key={placeholder} className='border-2 rounded-lg border-dashed flex items-center justify-center border-neutral-600 w-[300px] h-[300px] text-neutral-500'>
-                                    Loading image {index % 3}
-                                </div>
-                            ) : null}
-                            {index % 3 === 0 ? <br /> : null}
-                        </>
+                <div className={`absolute top-28 left-1/2 -translate-x-1/2`}>
+                    {placeholders.map((placeholder: any[], index: number) => (
+                        <React.Fragment key={index}>
+                            <div className='flex gap-7 mb-7'>
+                                {placeholder.map((num) => (
+                                    <>
+                                        {index < imgPerPage / 3 ? (
+                                            <>
+                                                {images && images[num - 1] ? (
+                                                    <>
+                                                        <div className='border-2 rounded-lg border-dashed flex items-center justify-center border-neutral-600 w-[300px] h-[300px] text-neutral-500'>
+                                                            {images[num - 1].id}
+                                                        </div>
+                                                    </>
+                                                ) : (
+                                                    <div className='border-2 rounded-lg border-dashed flex items-center justify-center border-neutral-600 w-[300px] h-[300px] text-neutral-500'>
+                                                        Loading image
+                                                    </div>
+                                                )}
+                                            </>
+                                        ) : null}
+                                    </>
+                                ))}
+                            </div>
+                        </React.Fragment>
                     ))}
                     {/* <RepeatedElement count={imgPerPage / 3}>
                         <div className='flex gap-7 mb-7'>
