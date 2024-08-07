@@ -128,10 +128,15 @@ interface UnsplashImage {
 // The full response is an array of UnsplashImage objects
 type UnsplashResponse = UnsplashImage[];
 
+interface SelectProps {
+    children: React.ReactNode;
+}
+
 export type {
   Functions,
   LoaderProps,
   ActionButtonProps,
   UnsplashResponse,
   UnsplashImage,
+  SelectProps,
 };
