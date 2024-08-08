@@ -22,6 +22,31 @@ interface Functions {
   searchInDictionary: (word: string) => Promise<any>;
 }
 
+interface Phonetic {
+  text: string;
+  audio?: string;
+}
+
+interface Definition {
+  definition: string;
+  example?: string;
+  synonyms: string[];
+  antonyms: string[];
+}
+
+interface Meaning {
+  partOfSpeech: string;
+  definitions: Definition[];
+}
+
+interface WordProps {
+  word: string;
+  phonetic: string;
+  phonetics: Phonetic[];
+  origin: string;
+  meanings: Meaning[];
+}
+
 interface LoaderProps {
   visible: boolean;
   className?: string;
@@ -130,12 +155,12 @@ interface UnsplashImage {
 type UnsplashResponse = UnsplashImage[];
 
 interface SearchInDictionaryProps {
-    word: string;
+  word: string;
 }
 
 interface SelectProps {
-    children: React.ReactNode;
-    onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  children: React.ReactNode;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export type {
@@ -146,4 +171,5 @@ export type {
   UnsplashImage,
   SelectProps,
   SearchInDictionaryProps,
+  WordProps,
 };
