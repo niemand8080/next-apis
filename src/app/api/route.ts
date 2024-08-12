@@ -1,12 +1,14 @@
 import { NextRequest } from "next/server";
 import { searchStockPhotos } from './unsplash';
 import { searchInDictionary } from './dictionary';
+import { getItemData } from './hypixel'
 
 import { Functions } from "@/interface/interfaces";
 
 const functions: Functions = {
   searchStockPhotos,
   searchInDictionary,
+  getItemData,
 };
 
 interface RetryConfig {
@@ -24,6 +26,7 @@ const defaultRetryConfig: RetryConfig = {
 const retryConfigs: Record<keyof Functions, RetryConfig> = {
   searchStockPhotos: defaultRetryConfig,
   searchInDictionary: defaultRetryConfig,
+  getItemData: defaultRetryConfig,
 };
 
 async function handleRequest(request: NextRequest): Promise<Response> {
