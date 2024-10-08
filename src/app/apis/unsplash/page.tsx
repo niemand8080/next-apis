@@ -51,16 +51,16 @@ const Unsplash: React.FC = () => {
                         placeholder="Type a word..."
                         className={`relative w-72 rounded-md bg-neutral-950 p-2 px-4 text-neutral-200 placeholder-neutral-500 outline-none focus:ring-1 focus:ring-neutral-700`}
                     />
-                    <Select ref={perPageSelectRef} onChange={(e) => {setImgPerPage(Number(e.target.value))}}>
+                    <Select ref={perPageSelectRef} title='Images per page' onChange={(e) => {setImgPerPage(Number(e.target.value))}}>
                         <option value={9}>9 / Page</option>
                         <option value={18}>18 / Page</option>
                         <option value={36}>36 / Page</option>
                     </Select>
-                    <Select ref={orderSelectRef}>
+                    <Select ref={orderSelectRef} title='Sort'>
                         <option value={"relevant"}>relevant</option>
                         <option value={"latest"}>latest</option>
                     </Select>
-                    <Select ref={colorSelectRef}>
+                    <Select ref={colorSelectRef} title='Color'>
                         <option value={""}>none</option>
                         <option value={"black_and_white"}>black/white</option>
                         <option value={"black"}>black</option>
@@ -74,7 +74,7 @@ const Unsplash: React.FC = () => {
                         <option value={"teal"}>teal</option>
                         <option value={"blue"}>blue</option>
                     </Select>
-                    <Select ref={orientationSelectRef}>
+                    <Select ref={orientationSelectRef} title='Format'>
                         <option value={""}>none</option>
                         <option value={"landscape"}>landscape</option>
                         <option value={"portrait"}>portrait</option>

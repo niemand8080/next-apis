@@ -157,6 +157,7 @@ type UnsplashResponse = UnsplashImage[];
 
 interface SelectProps {
   children: React.ReactNode;
+  title?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 

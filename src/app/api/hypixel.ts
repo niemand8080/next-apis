@@ -1,4 +1,4 @@
-import axios from 'axios'
+import fetch from 'node-fetch';
 
 const API_KEY = process.env.SKYBLOCK_API_KEY;
 
@@ -15,7 +15,8 @@ async function getItemData(itemId: string) {
           return { success: false, message: "HTTP error!", status: response.status }
         }
     
-        const data = await response.json();
+        const data: any = await response.json();
+        console.log(data);
         
         // Suche nach dem spezifischen Item in den zurückgegebenen Daten
         const item = data.items.find((item: any) => item.id === itemId);

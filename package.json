@@ -6,14 +6,18 @@
     "dev": "./node_modules/.bin/next dev",
     "build": "./node_modules/.bin/next build",
     "start": "./node_modules/.bin/next start",
-    "lint": "./node_modules/.bin/next lint"
+    "lint": "./node_modules/.bin/next lint",
+    "email": "email dev"
   },
   "dependencies": {
+    "@react-email/components": "0.0.22",
     "axios": "^1.7.3",
     "next": "14.2.5",
     "node-fetch": "^3.3.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-email": "2.1.6",
+    "resend": "^3.5.0",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
     "unsplash-js": "^7.0.19"
